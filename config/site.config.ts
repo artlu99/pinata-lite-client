@@ -1,9 +1,9 @@
 const siteMeta = {
-	title: "Diet Cast",
-	description: "The only client more lite than /diet-coke",
-  domain: "www.dietcast.xyz",
-  websiteUrl: "https://www.dietcast.xyz",
-  channelUrl: "https://warpcast.com/~/channel/diet-coke",
+	title: "The BeavChris and BArt-Head Show",
+	description: "Farcaster lite client for /bcbhshow, powered by Pinata",
+  domain: "client.artlu.xyz",
+  websiteUrl: "https://client.artlu.xyz",
+  channelUrl: "https://warpcast.com/~/channel/bcbhshow",
   logo: "/logo.svg", 
   ogImage: "/og.png",
   favicon: "/favicon.png"

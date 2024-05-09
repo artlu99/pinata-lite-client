@@ -9,10 +9,10 @@ export async function POST(request: NextRequest) {
     if(body.fileLink){
       castBody.text = body.castMessage
       castBody.embeds = [{ url: body.fileLink }]
-      castBody.parentUrl = "https://warpcast.com/~/channel/diet-coke"
+      castBody.parentUrl = "https://warpcast.com/~/channel/bcbhshow"
     } else {
       castBody.text = body.castMessage
-      castBody.parentUrl = "https://warpcast.com/~/channel/diet-coke"
+      castBody.parentUrl = "https://warpcast.com/~/channel/bcbhshow"
     }
 
     const res = await fdk.sendCast({

@@ -27,7 +27,7 @@ async function cronFeed(channel: string, pageSize: number) {
 }
 
 export async function Feed() {
-  const feed = await cronFeed("https://warpcast.com/~/channel/diet-coke", 50);
+  const feed = await cronFeed("https://warpcast.com/~/channel/bcbhshow", 50);
 
   return (
     <>

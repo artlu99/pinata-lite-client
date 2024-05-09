@@ -134,10 +134,10 @@ export function CastForm({ signerId }: FormProps) {
             name="cast"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Send a Cast to /diet-coke</FormLabel>
+                <FormLabel>Send a Cast to /bcbhshow</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="mmmm diet coke"
+                    placeholder="hurh hurh"
                     className="resize-none w-[300px]"
                     {...field}
                   />
