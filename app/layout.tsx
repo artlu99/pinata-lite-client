@@ -17,9 +17,7 @@ export const metadata: Metadata = {
     description: siteMeta.description,
     url: siteMeta.websiteUrl,
     siteName: siteMeta.title,
-    images: [
-      `${siteMeta.websiteUrl + siteMeta.ogImage}`,
-    ],
+    images: [`${siteMeta.websiteUrl + siteMeta.ogImage}`],
   },
   icons: {
     icon: siteMeta.favicon,
@@ -30,23 +28,21 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteMeta.title,
     description: siteMeta.description,
-    images: [
-      `${siteMeta.websiteUrl + siteMeta.ogImage}`,
-    ],
+    images: [`${siteMeta.websiteUrl + siteMeta.ogImage}`],
   },
   other: {
     "fc:frame": "vNext",
-    "fc:frame:image":
-      "https://dweb.mypinata.cloud/ipfs/QmYZArEWBaAosWP1XRAB1zLK1kK7zScia4rHbv62xKs3zo?filename=og.png",
+    "fc:frame:image": `${siteMeta.websiteUrl + siteMeta.ogImage}`,
     "fc:frame:button:1": "Visit",
     "fc:frame:button:1:action": "link",
-    "fc:frame:button:1:target": "https://dietcast.xyz",
+    "fc:frame:button:1:target": `${siteMeta.websiteUrl}`,
     "fc:frame:button:2": "Tutorial",
     "fc:frame:button:2:action": "link",
-    "fc:frame:button:2:target": "https://www.pinata.cloud/blog/how-to-build-a-lite-client-with-the-pinata-farcaster-api",
+    "fc:frame:button:2:target":
+      "https://www.pinata.cloud/blog/how-to-build-a-lite-client-with-the-pinata-farcaster-api",
     "fc:frame:button:3": "Repo",
     "fc:frame:button:3:action": "link",
-    "fc:frame:button:3:target": "https://github.com/PinataCloud/diet-cast",
+    "fc:frame:button:3:target": "https://github.com/artlu99/pinata-lite-client",
   },
 };
 
