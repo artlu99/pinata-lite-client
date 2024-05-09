@@ -66,3 +66,4 @@ export async function PUT(req: NextRequest, response: NextResponse) {
   }
 }
 
+export const runtime = 'edge';

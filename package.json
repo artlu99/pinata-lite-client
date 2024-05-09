@@ -1,5 +1,5 @@
 {
-  "name": "pinata-channel-feed",
+  "name": "pinata-lite-client-channel-feed",
   "version": "0.1.0",
   "private": true,
   "scripts": {

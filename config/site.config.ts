@@ -1,8 +1,8 @@
 const siteMeta = {
 	title: "The BeavChris and BArt-Head Show",
 	description: "Farcaster lite client for /bcbhshow, powered by Pinata",
-  domain: "client.artlu.xyz",
-  websiteUrl: "https://client.artlu.xyz",
+  domain: "client-bcbhshow.artlu.xyz",
+  websiteUrl: "https://client-bcbhshow.artlu.xyz",
   channelUrl: "https://warpcast.com/~/channel/bcbhshow",
   logo: "/logo.svg", 
   ogImage: "/og.png",
