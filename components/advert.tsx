@@ -114,7 +114,6 @@ const Advert = () => {
             via{' '}
             <a
                 href="https://fcan.xyz"
-                alt="🕸️ FCAN"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="no-underline"
