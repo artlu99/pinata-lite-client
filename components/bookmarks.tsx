@@ -2,10 +2,12 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
+import "react-farcaster-embed/dist/styles.css";
 
 const fid = 6546;
 const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
-
+const usernames = ["links", "alexpaden", "artlu"];
 interface BookmarksResponse {
   unfiled: string[];
 }
@@ -26,7 +28,7 @@ const DecentralizedBookmarks = () => {
     <>
       <div>Bookmarks (decentralized!):</div>
       <div>
-        {l?.map((bm, idx) => (
+        {l?.slice(0, 3).map((bm, idx) => (
           <ul>
             <li>
               <a
@@ -34,8 +36,11 @@ const DecentralizedBookmarks = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {idx}: {bm.substring(0, 6)}...{bm.slice(-5)}
+                {idx + 1}: {bm.substring(0, 6)}...{bm.slice(-5)}
               </a>
+              <FarcasterEmbed
+                url={`https://warpcast.com/${usernames[idx]}/${bm}`}
+              />
             </li>
           </ul>
         ))}

@@ -27,6 +27,7 @@
     "pinata-fdk": "^3.10.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-farcaster-embed": "^1.6.0",
     "react-hook-form": "^7.51.3",
     "react-qrcode-logo": "^2.10.0",
     "tailwind-merge": "^2.2.2",
