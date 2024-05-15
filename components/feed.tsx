@@ -26,8 +26,11 @@ async function cronFeed(channel: string, pageSize: number) {
   }
 }
 
-export async function Feed() {
-  const feed = await cronFeed("https://warpcast.com/~/channel/bcbhshow", 50);
+interface FeedProps {
+  channelUrl: string;
+}
+export async function Feed(props: FeedProps) {
+  const feed = await cronFeed(props.channelUrl, 50);
 
   return (
     <>
