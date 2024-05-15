@@ -7,12 +7,15 @@ import siteMeta from "@/config/site.config";
 import Advert from "@/components/advert";
 import ChannelSelector from "@/components/channel-selector";
 import ToDo from "@/components/todo";
+import DecentralizedBookmarks from "@/components/bookmarks";
 
 export default async function Home() {
   return (
     <main className="grid min-h-screen gap-12 mt-12 px-4 sm:grid-cols-1 lg:grid-cols-3">
       <div className="hidden lg:block">
         <ChannelSelector />
+        <hr />
+        <DecentralizedBookmarks />
       </div>
       <div className="block lg:hidden">
         <Advert />
