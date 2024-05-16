@@ -1,4 +1,4 @@
-# DietCast.xyz - A Farcaster Lite Client
+# DietCast.xyz fork - A Farcaster Lite Client
 
 DietCast is a lite client for Farcaster that includes a channel feed, auth, and sending casts thanks to the Pinata [Farcaster API](https://docs.pinata.cloud/farcaster/farcaster-api/getting-started) and [Auth](https://docs.pinata.cloud/farcaster/farcaster-auth). To learn more how it works check out the blog post [here](https://www.pinata.cloud/blog/how-to-build-a-lite-client-with-the-pinata-farcaster-api)
 
@@ -32,6 +32,8 @@ export default siteMeta;
 ```
 
 Then open the `.env.sample` file and fill in your own variables.
+
+Also change some of the SVG and PNG assets for your own (don't forget the favicon), and do a global search for hardcoded phrases of `diet-coke` and `dietcast`.
 
 #### ℹ️ If you want to enable auth and sending casts you will need a paid [Pinata account](https://pinata.cloud/pricing)
 
