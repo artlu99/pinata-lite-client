@@ -31,7 +31,7 @@ const DecentralizedBookmarks = () => {
     <>
       <div>Bookmarks (decentralized!):</div>
       <div>
-        {l.map((bm, idx) => 
+        {l.slice(0, 3).map((bm, idx) => 
           <ul>
             <li>
               <a
