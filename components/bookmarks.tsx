@@ -7,9 +7,8 @@ import "react-farcaster-embed/dist/styles.css";
 
 const fid = 6546;
 const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
-const usernames = ["links", "alexpaden", "artlu"];
 interface BookmarksResponse {
-  unfiled: string[];
+  unfiled: {fid: string, username: string, hash: `0x${string}`}[];
 }
 
 const DecentralizedBookmarks = () => {
@@ -32,14 +31,14 @@ const DecentralizedBookmarks = () => {
           <ul>
             <li>
               <a
-                href={`https://supercast.xyz/c/${bm}`}
+                href={`https://supercast.xyz/c/${bm.hash}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {idx + 1}: {bm.substring(0, 6)}...{bm.slice(-5)}
+                {idx + 1}: {bm.hash.substring(0, 6)}...{bm.hash.slice(-5)}
               </a>
               <FarcasterEmbed
-                url={`https://warpcast.com/${usernames[idx]}/${bm}`}
+                url={`https://warpcast.com/${bm.username}/${bm.hash.slice(0,10)}`}
               />
             </li>
           </ul>
