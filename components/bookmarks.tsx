@@ -9,7 +9,7 @@ const fid = 6546;
 const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
 
 interface Bookmark {
-  fid: string, username: string, hash: `0x${string}`
+  bookmarkTimestamp: number, fid: string, username: string, hash: `0x${string}`
 };
 interface BookmarksResponse {
   unfiled?: Bookmark[]
@@ -26,7 +26,7 @@ const DecentralizedBookmarks = () => {
     void fetchData();
   }, []);
 
-  const l: Bookmark[] = data?.unfiled ?? [];
+  const l: Bookmark[] = (data?.unfiled ?? []).slice().sort((a, b)=>a.bookmarkTimestamp - b.bookmarkTimestamp);
   
   return (
     <>
