@@ -8,8 +8,11 @@ import "react-farcaster-embed/dist/styles.css";
 const fid = 6546;
 const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
 interface BookmarksResponse {
-  unfiled: {fid: string, username: string, hash: `0x${string}`}[];
+  unfiled: string[]
 }
+interface Bookmark {
+  fid: string, username: string, hash: `0x${string}`
+};
 
 const DecentralizedBookmarks = () => {
   const [data, setData] = useState<BookmarksResponse | undefined>(undefined);
@@ -22,12 +25,13 @@ const DecentralizedBookmarks = () => {
     void fetchData();
   }, []);
 
-  const l = data?.unfiled;
+  const l: Bookmark[] = data ? data.unfiled.map((bm) => JSON.parse(bm)) : [];
+
   return (
     <>
       <div>Bookmarks (decentralized!):</div>
       <div>
-        {l?.slice(0, 3).map((bm, idx) => (
+        {l.map((bm, idx) => 
           <ul>
             <li>
               <a
@@ -42,7 +46,7 @@ const DecentralizedBookmarks = () => {
               />
             </li>
           </ul>
-        ))}
+        )}
       </div>
     </>
   );
