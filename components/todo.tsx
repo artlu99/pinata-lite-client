@@ -16,7 +16,6 @@ async function ToDo() {
           <li>frames</li>
         </ul>
       </div>
-      <div>(will be algo-generated per user, after SIWF login)</div>
     </>
   );
 }

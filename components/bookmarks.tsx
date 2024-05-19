@@ -7,6 +7,7 @@ import "react-farcaster-embed/dist/styles.css";
 
 const fid = 6546;
 const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
+
 interface BookmarksResponse {
   unfiled: string[]
 }
@@ -31,7 +32,7 @@ const DecentralizedBookmarks = () => {
     <>
       <div>Bookmarks (decentralized!):</div>
       <div>
-        {l.slice(0, 3).map((bm, idx) => 
+        {l.length === 0 ? <div>No bookmarks found</div> : l.slice(0, 3).map((bm, idx) => 
           <ul>
             <li>
               <a
