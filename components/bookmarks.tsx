@@ -6,7 +6,7 @@ import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
 import "react-farcaster-embed/dist/styles.css";
 
 const fid = 6546;
-const endpoint = "https://worker-misty-voice-905f.artlu.workers.dev/?fid=";
+const endpoint = "https://decent-bookmarks.artlu.workers.dev/?fid=";
 
 const NUM_BOOKMARKS_SHOWN = 3;
 const BOOKMARKS_ORDER: "ASC" | "DESC" = "DESC";
