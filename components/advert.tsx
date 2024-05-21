@@ -1,39 +1,17 @@
 "use client";
 
+import { FCANResponse } from "@/lib/external";
 import { SettingsIcon } from "lucide-react";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
-const endpoint =
-  "https://fcan.xyz/getadsfor?fid=391262&src=client-bcbhshow.artlu.xyz";
 const fcanUserSettingsLink = () => "https://fcan.xyz/settings";
 const fcanTransparencyLink = (id: string | undefined) =>
   "https://fcan.xyz/transparency?id=" + (id ?? 0);
-
-interface FCANResponse {
-  id: string;
-  head: string;
-  text: string;
-  rewardsMultiple?: number;
-  displayUrl?: string;
-  attribUrl?: string;
-}
 
 const openInNewTab = (url: string | undefined) => {
   if (url) window.open(url, "_blank", "noopener noreferrer");
 };
 
-const Advert = () => {
-  const [data, setData] = useState<FCANResponse | undefined>(undefined);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(endpoint);
-      setData(response.data);
-    }
-    void fetchData();
-  }, []);
-
+const Advert = ({ data }: { data: FCANResponse }) => {
   const Card = () => {
     return (
       <div>

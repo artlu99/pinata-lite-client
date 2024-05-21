@@ -8,17 +8,22 @@ import Advert from "@/components/advert";
 import ChannelSelector from "@/components/channel-selector";
 import ToDo from "@/components/todo";
 import DecentralizedBookmarks from "@/components/bookmarks";
+import { fetchDecentBookmarks, fetchFCAN } from "@/lib/external";
 
 export default async function Home() {
+  const fid = 6546;
+  const advert = await fetchFCAN();
+  const bookmarks = await fetchDecentBookmarks(fid);
+
   return (
     <main className="grid min-h-screen gap-12 mt-12 px-4 sm:grid-cols-1 lg:grid-cols-3">
       <div className="hidden lg:block">
         <ChannelSelector />
         <hr />
-        <DecentralizedBookmarks />
+        <DecentralizedBookmarks data={bookmarks} />
       </div>
       <div className="block lg:hidden">
-        <Advert />
+        <Advert data={advert} />
       </div>
       <div className="block">
         <Image
@@ -32,7 +37,7 @@ export default async function Home() {
         <Feed channelId={siteMeta.channelId} />
       </div>
       <div className="hidden lg:block">
-        <Advert />
+        <Advert data={advert} />
         <hr />
         <ToDo />
       </div>

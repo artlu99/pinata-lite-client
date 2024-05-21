@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 import { fdk } from "@/config/fdk"
 
+export const runtime = "edge";
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -34,5 +36,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(error);
   }
 }
-
-export const runtime = 'edge';

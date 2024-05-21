@@ -1,30 +1,14 @@
-"use client";
-
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
+import { Bookmark, BookmarksResponse } from "@/lib/external";
+import { FarcasterEmbed } from "react-farcaster-embed";
 import "react-farcaster-embed/dist/styles.css";
-
-const fid = 6546;
-const endpoint = "https://decent-bookmarks.artlu.xyz/?fid=";
 
 const NUM_BOOKMARKS_SHOWN = 3;
 const BOOKMARKS_ORDER: "ASC" | "DESC" = "DESC";
 
-interface Bookmark {
-  timestamp: number;
-  fid: string;
-  username: string;
-  hash: `0x${string}`;
-}
-interface BookmarksResponse {
-  unfiled?: Bookmark[];
-}
-
 const renderBookmarkListItem = (bm: Bookmark, idx: number) => {
   const tsString = new Date(bm.timestamp).toLocaleString();
   return (
-    <li>
+    <li key={`bookmark:${idx}`}>
       <a
         href={`https://supercast.xyz/c/${bm.hash}`}
         target="_blank"
@@ -40,17 +24,7 @@ const renderBookmarkListItem = (bm: Bookmark, idx: number) => {
   );
 };
 
-const DecentralizedBookmarks = () => {
-  const [data, setData] = useState<BookmarksResponse | undefined>(undefined);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(endpoint + fid);
-      setData(response.data);
-    }
-    void fetchData();
-  }, []);
-
+const DecentralizedBookmarks = ({ data }: { data: BookmarksResponse }) => {
   const l: Bookmark[] = data?.unfiled ?? [];
 
   return (

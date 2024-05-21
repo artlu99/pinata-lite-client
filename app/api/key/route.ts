@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 const { v4: uuidv4 } = require("uuid");
 const pinataJWT = process.env.PINATA_JWT;
 
+export const runtime = "edge";
+
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const uuid = uuidv4();
@@ -65,5 +67,3 @@ export async function PUT(req: NextRequest, response: NextResponse) {
     return NextResponse.json({ text: "Error Deleting API Key:" }, { status: 500 });
   }
 }
-
-export const runtime = 'edge';
