@@ -3,7 +3,7 @@ const siteMeta = {
 	description: "Farcaster lite client for /bcbhshow, powered by Pinata",
   domain: "client-bcbhshow.artlu.xyz",
   websiteUrl: "https://client-bcbhshow.artlu.xyz",
-  channelUrl: "https://warpcast.com/~/channel/bcbhshow",
+  channelId: "bcbhshow",
   logo: "/logo.svg", 
   ogImage: "/og.png",
   favicon: "/favicon.png"

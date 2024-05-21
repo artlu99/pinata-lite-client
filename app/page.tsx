@@ -29,7 +29,7 @@ export default async function Home() {
           height={350}
         />
         <Separator className="sm:w-[500px] w-sm" />
-        <Feed channelUrl={siteMeta.channelUrl} />
+        <Feed channelId={siteMeta.channelId} />
       </div>
       <div className="hidden lg:block">
         <Advert />
