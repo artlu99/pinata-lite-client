@@ -4,8 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import siteMeta from "@/config/site.config";
 
-export const runtime = 'edge'
-
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
