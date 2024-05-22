@@ -1,8 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { fdk } from "@/config/fdk";
 
-export const runtime = "edge";
-
 export async function POST() {
   try {
     const res = await fdk.createSponsoredSigner();

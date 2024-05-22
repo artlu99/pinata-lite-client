@@ -19,14 +19,16 @@ export interface BookmarksResponse {
 export async function fetchFCAN(): Promise<FCANResponse> {
   const endpoint =
     "https://fcan.xyz/getadsfor?fid=391262&src=client-bcbhshow.artlu.xyz";
-  const res = await fetch(`${endpoint}`);
+  const res = await fetch(`${endpoint}`, { next: { revalidate: 0 } });
   if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();
 }
 
-export async function fetchDecentBookmarks(fid: number): Promise<BookmarksResponse> {
+export async function fetchDecentBookmarks(
+  fid: number
+): Promise<BookmarksResponse> {
   const endpoint = "https://decent-bookmarks.artlu.xyz/?fid=";
-  const res = await fetch(endpoint + fid);
+  const res = await fetch(endpoint + fid, { next: { revalidate: 0 } });
   if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();
 }

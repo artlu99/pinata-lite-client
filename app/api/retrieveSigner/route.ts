@@ -3,8 +3,6 @@ import { createAppClient, viemConnector } from "@farcaster/auth-client";
 import { fdk } from "@/config/fdk"
 import siteMeta from "@/config/site.config";
 
-export const runtime = "edge";
-
 const appClient = createAppClient({
   relay: "https://relay.farcaster.xyz",
   ethereum: viemConnector()

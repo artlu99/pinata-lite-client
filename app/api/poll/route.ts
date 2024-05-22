@@ -1,8 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { fdk } from "@/config/fdk";
 
-export const runtime = "edge";
-
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   try {
