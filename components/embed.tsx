@@ -3,6 +3,7 @@ import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { AvatarImage, Avatar, AvatarFallback } from "./ui/avatar";
+import { preprocess } from "@/lib/preprocess-embeds";
 
 interface EmbedObject {
   url?: string;
@@ -13,6 +14,9 @@ interface EmbedObject {
 }
 
 async function fetchData(url: string) {
+  const cachedData = await preprocess(url); // speed up known embeds
+  if (cachedData) return cachedData;
+
   let content;
   try {
     const res = await fetch(url);

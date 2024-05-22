@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Embed } from "@/components/embed";
 
