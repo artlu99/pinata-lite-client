@@ -10,8 +10,6 @@ import ToDo from "@/components/todo";
 import DecentralizedBookmarks from "@/components/bookmarks";
 import { fetchDecentBookmarks, fetchFCAN } from "@/lib/external";
 
-export const runtime = 'edge';
-
 export default async function Home() {
   const fid = 6546;
   const advert = await fetchFCAN();
