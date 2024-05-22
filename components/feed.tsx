@@ -30,7 +30,7 @@ interface FeedProps {
   channelId: string;
 }
 export async function Feed(props: FeedProps) {
-  const feed = await cronFeed(props.channelId, 50);
+  const feed = await cronFeed(props.channelId, 10);
 
   return (
     <>

@@ -2,7 +2,6 @@ import { Feed } from "@/components/feed";
 import "./globals.css";
 import { Separator } from "@/components/ui/separator";
 import "@farcaster/auth-kit/styles.css";
-import { Auth } from "@/components/auth";
 import Image from "next/image";
 import siteMeta from "@/config/site.config";
 import Advert from "@/components/advert";
@@ -12,7 +11,7 @@ import DecentralizedBookmarks from "@/components/bookmarks";
 import { fetchDecentBookmarks, fetchFCAN } from "@/lib/external";
 
 export default async function Home() {
-  const fid = 6546;
+  const fid = 391262;
   const advert = await fetchFCAN();
   const bookmarks = await fetchDecentBookmarks(fid);
 
@@ -34,7 +33,6 @@ export default async function Home() {
           width={350}
           height={350}
         />
-        <Auth />
         <Separator className="sm:w-[500px] w-sm" />
         <Feed channelId={siteMeta.channelId} />
       </div>
