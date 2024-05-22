@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 export interface FCANResponse {
   id: string;
   head: string;
