@@ -1,5 +1,3 @@
-"use server";
-
 export interface FCANResponse {
   id: string;
   head: string;
