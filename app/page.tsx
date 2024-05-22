@@ -18,12 +18,12 @@ export default async function Home() {
   return (
     <main className="grid min-h-screen gap-12 mt-12 px-4 sm:grid-cols-1 lg:grid-cols-3">
       <div className="hidden lg:block">
-        <ChannelSelector />
-        <hr />
-        <DecentralizedBookmarks data={bookmarks} />
+        <DecentralizedBookmarks data={bookmarks} wideScreen={true} />
       </div>
       <div className="block lg:hidden">
         <Advert data={advert} />
+        <hr />
+        <DecentralizedBookmarks data={bookmarks} wideScreen={false} />
       </div>
       <div className="block">
         <Image
@@ -38,6 +38,8 @@ export default async function Home() {
       </div>
       <div className="hidden lg:block">
         <Advert data={advert} />
+        <hr />
+        <ChannelSelector />
         <hr />
         <ToDo />
       </div>

@@ -7,7 +7,9 @@ async function ChannelSelector() {
           <li>The BeavChris and BArt-Head Show</li>
         </ul>
       </div>
-      <div>(will be algo-generated per user, after SIWF login)</div>
+      <div className="text-sm">
+        (will be algo-generated per user, after SIWN login)
+      </div>
     </>
   );
 }
