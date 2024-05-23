@@ -42,9 +42,9 @@ export function Feed(props: FeedProps) {
                 <p className="text-gray-600">@{cast.author.username}</p>
               </div>
               <p className="pb-2">{cast.text.replace(/https?:\/\/\S+/i, "")}</p>
-              {/* {cast.embeds && cast.embeds.length > 0 ? (
+              {cast.embeds && cast.embeds.length > 0 ? (
                 <Embed embedObject={cast.embeds[0]} />
-              ) : null} */}
+              ) : null}
             </div>
           </div>
         ))}
