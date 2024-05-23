@@ -4,6 +4,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Embed } from "@/components/embed";
 import { Checkbox } from "./ui/checkbox";
 import { Separator } from "./ui/separator";
+import { useBearStore } from "@/lib/bearStore";
 
 const settingLabel = (label: string) => (
   <div className="grid gap-1.5 leading-none">
@@ -16,13 +17,18 @@ const settingLabel = (label: string) => (
   </div>
 );
 
-interface FeedProps {
-  channelId: string;
-}
-export default function Feed(props: FeedProps) {
+export default function Feed() {
   const [feed, setFeed] = useState<FeedObject>();
-  const [hideImageOnly, setHideImageOnly] = useState<boolean>(false);
-  const [hidePfp, setHidePfp] = useState<boolean>(false);
+
+  const {
+    channelId,
+    hideEmbeds,
+    toggleHideEmbeds,
+    hideImageOnly,
+    toggleHideImageOnly,
+    hidePfp,
+    toggleHidePfp,
+  } = useBearStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,12 +37,12 @@ export default function Feed(props: FeedProps) {
         headers: {
           contentType: "application/json",
         },
-        body: JSON.stringify({ channel: props.channelId, pageSize: 10 }),
+        body: JSON.stringify({ channel: channelId, pageSize: 10 }),
       });
       setFeed(await res.json());
     };
     fetchData();
-  }, [props.channelId]);
+  }, [channelId]);
 
   return (
     feed && (
@@ -44,17 +50,25 @@ export default function Feed(props: FeedProps) {
         <div>Feed Settings:</div>
         <div className="items-top flex space-x-2">
           <Checkbox
+            id="embeds"
+            checked={hideEmbeds}
+            onClick={() => toggleHideEmbeds()}
+          />
+          {settingLabel("Hide embeds")}
+          <Checkbox
             id="image-only"
             checked={hideImageOnly}
-            onClick={() => setHideImageOnly(!hideImageOnly)}
+            onClick={() => toggleHideImageOnly()}
           />
           {settingLabel("Hide image-only casts")}
           <Checkbox
             id="pfp"
             checked={hidePfp}
-            onClick={() => setHidePfp(!hidePfp)}
+            onClick={() => toggleHidePfp()}
           />
           {settingLabel("Hide PFPs")}
+          <Checkbox id="power-badge" checked={false} onClick={() => {}} />
+          {settingLabel("Power Badge only")}
         </div>
         <Separator />
         {feed.casts.map((cast) => {
@@ -90,7 +104,7 @@ export default function Feed(props: FeedProps) {
                 <p className="pb-2">
                   {cast.text.replace(/https?:\/\/\S+/i, "")}
                 </p>
-                {cast.embeds && cast.embeds.length > 0 ? (
+                {!hideEmbeds && cast.embeds && cast.embeds.length > 0 ? (
                   <Embed embedObject={cast.embeds[0]} />
                 ) : null}
               </div>

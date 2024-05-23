@@ -5,6 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useBearStore } from "@/lib/bearStore";
 
 const knownChannels = [
   { id: "bcbhshow", name: "The BeavChris and BArt-Head Show" },
@@ -13,23 +14,19 @@ const knownChannels = [
   { id: "thomas", name: "thomas" },
 ];
 
-function ChannelSelector({
-  currentChannelId,
-  onSelect,
-}: {
-  currentChannelId: string;
-  onSelect: (value: string) => void;
-}) {
+function ChannelSelector() {
+  const { channelId, setChannelId } = useBearStore();
+
   return (
     <>
       <div>Channel selector:</div>
       <Select
         onValueChange={(value) => {
-          onSelect(value);
+          setChannelId(value);
         }}
       >
         <SelectTrigger className="w-full">
-          <SelectValue placeholder={currentChannelId} />
+          <SelectValue placeholder={channelId} />
         </SelectTrigger>
         <SelectContent>
           {knownChannels.map((selectItem) => {

@@ -12,12 +12,12 @@ function ToDo() {
         <AccordionTrigger>To Do</AccordionTrigger>
         <AccordionContent>
           <ul>
-            <li>state management (dark mode, save settings)</li>
             <li>
-              lots of feed settings: embeds on/off, power users on/off,
-              following on/off, Airstack SCS slider
+              lots of feed settings: power badge, me|channel following, Airstack
+              SCS slider
             </li>
             <li>algo selects channels per user</li>
+            <li>dark mode</li>
             <li>cross-client pinned casts</li>
             <li>cross-client actions + frames</li>
           </ul>

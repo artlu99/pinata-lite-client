@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { NeynarContextProvider, Theme } from "@neynar/react";
 import { Separator } from "@/components/ui/separator";
 import "./globals.css";
@@ -14,9 +13,11 @@ import Feed from "@/components/feed";
 import ToDo from "@/components/todo";
 import GithubLink from "@/components/github";
 
-export default function Home() {
-  const [channelId, setChannelId] = useState(siteMeta.channelId);
+const Logo = () => (
+  <Image src={siteMeta.logo} alt="logo" className="" width={450} height={450} />
+);
 
+export default function Home() {
   return (
     <NeynarContextProvider
       settings={{
@@ -30,29 +31,21 @@ export default function Home() {
     >
       <main className="grid min-h-screen gap-12 mt-12 px-4 sm:grid-cols-1 lg:grid-cols-3">
         <div className="hidden lg:block">
+          <Logo />
           <DecentralizedBookmarks wideScreen={true} />
         </div>
         <div className="block lg:hidden">
           <Advert />
+          <Logo />
           <hr />
           <DecentralizedBookmarks wideScreen={false} />
         </div>
         <div className="block">
-          <Image
-            src={siteMeta.ogImage}
-            alt="logo"
-            className=""
-            width={350}
-            height={350}
-          />
-          <ChannelSelector
-            currentChannelId={channelId}
-            onSelect={setChannelId}
-          />
-          <Auth channelId={channelId} />
+          <ChannelSelector />
+          <Auth />
           <hr />
           <Separator className="sm:w-[500px] w-sm" />
-          <Feed channelId={channelId} />
+          <Feed />
         </div>
         <div className="hidden lg:block">
           <Advert />

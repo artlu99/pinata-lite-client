@@ -21,6 +21,7 @@ import { uploadFile } from "@/utils/upload-file";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Image as Photo } from "lucide-react";
+import { useBearStore } from "@/lib/bearStore";
 
 const formSchema = z.object({
   cast: z.string().min(2).max(320),
@@ -29,14 +30,14 @@ const formSchema = z.object({
 
 interface FormProps {
   signerId: string;
-  channelId: string;
 }
-
-export function CastForm({ signerId, channelId }: FormProps) {
+export function CastForm({ signerId }: FormProps) {
   const [loading, setLoading] = useState(false);
   const [castComplete, setCastComplete] = useState(false);
   const [selectedFile, setSelecteFile] = useState();
   const [imageLoading, setImageLoading] = useState(false);
+
+  const { channelId } = useBearStore();
 
   async function fileChangeHandler(event: any) {
     setImageLoading(true);

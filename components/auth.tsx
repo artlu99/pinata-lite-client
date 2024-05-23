@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { SignIn } from "@/components/sign-in";
 
-export default function Auth({ channelId }: { channelId: string }) {
+export default function Auth() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export default function Auth({ channelId }: { channelId: string }) {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] max-w-[375px]">
-        <SignIn channelId={channelId} />
+        <SignIn />
       </DialogContent>
     </Dialog>
   );
