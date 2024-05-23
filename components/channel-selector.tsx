@@ -1,15 +1,48 @@
-async function ChannelSelector() {
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const knownChannels = [
+  { id: "bcbhshow", name: "The BeavChris and BArt-Head Show" },
+  { id: "christin", name: "christin's 🧹✨🏥🩺⚕️🌱 crew" },
+  { id: "spirituality", name: "spirituality" },
+];
+
+function ChannelSelector({
+  currentChannelId,
+  onSelect,
+}: {
+  currentChannelId: string;
+  onSelect: (value: string) => void;
+}) {
   return (
     <>
-      <div>Channels selector:</div>
-      <div>
-        <ul>
-          <li>The BeavChris and BArt-Head Show</li>
-        </ul>
-      </div>
-      <div className="text-sm">
-        (will be algo-generated per user, after SIWN login)
-      </div>
+      <div>Channel selector:</div>
+      <Select
+        onValueChange={(value) => {
+          onSelect(value);
+        }}
+      >
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder={currentChannelId} />
+        </SelectTrigger>
+        <SelectContent>
+          {knownChannels.map((selectItem) => {
+            return (
+              <SelectItem
+                value={selectItem.id}
+                key={"select-item-" + selectItem.id}
+              >
+                {selectItem.name}
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
     </>
   );
 }

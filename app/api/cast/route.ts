@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
 import { NeynarAPIClient, isApiErrorResponse } from "@neynar/nodejs-sdk";
-import siteMeta from "@/config/site.config";
 
 const client = new NeynarAPIClient(process.env.NEYNAR_API_KEY!);
 
@@ -10,17 +9,18 @@ export async function POST(request: NextRequest) {
 
   const js = (await request.json()) as {
     signerId: string;
+    channelId: string;
     castMessage: string;
     fileLink?: string;
   };
 
-  const { signerId: signerUuid, castMessage: text, fileLink } = js;
-  const idemKey = JSON.stringify(js)
+  const { signerId: signerUuid, channelId, castMessage: text, fileLink } = js;
+  const idemKey = JSON.stringify(js);
 
   try {
     const { hash } = await client.publishCast(signerUuid, text, {
       embeds: fileLink ? [{ url: fileLink }] : undefined,
-      channelId: siteMeta.channelId,
+      channelId: channelId,
       idem: idemKey,
     });
     return NextResponse.json(

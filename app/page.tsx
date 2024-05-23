@@ -13,7 +13,7 @@ import DecentralizedBookmarks from "@/components/bookmarks";
 import { Auth } from "@/components/auth";
 import { NeynarContextProvider, Theme } from "@neynar/react";
 
-export default async function Home() {
+export default function Home() {
   const [channelId, setChannelId] = useState(siteMeta.channelId);
 
   return (
@@ -44,14 +44,17 @@ export default async function Home() {
             width={350}
             height={350}
           />
-          <Auth />
+          <ChannelSelector
+            currentChannelId={channelId}
+            onSelect={setChannelId}
+          />
+          <Auth channelId={channelId} />
+          <hr />
           <Separator className="sm:w-[500px] w-sm" />
           <Feed channelId={channelId} />
         </div>
         <div className="hidden lg:block">
           <Advert />
-          <hr />
-          <ChannelSelector />
           <hr />
           <ToDo />
         </div>

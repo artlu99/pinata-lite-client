@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-async function ToDo() {
+function ToDo() {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
@@ -15,6 +15,7 @@ async function ToDo() {
             <li>fix (temporarily broken) embeds</li>
             <li>state management (dark mode)</li>
             <li>setting to hide caster details</li>
+            <li>setting to hide casts with embeds only</li>
             <li>algo selects channels</li>
             <li>cross-client pinned casts</li>
             <li>actions + frames</li>

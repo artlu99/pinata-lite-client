@@ -29,9 +29,10 @@ const formSchema = z.object({
 
 interface FormProps {
   signerId: string;
+  channelId: string;
 }
 
-export function CastForm({ signerId }: FormProps) {
+export function CastForm({ signerId, channelId }: FormProps) {
   const [loading, setLoading] = useState(false);
   const [castComplete, setCastComplete] = useState(false);
   const [selectedFile, setSelecteFile] = useState();
@@ -66,6 +67,7 @@ export function CastForm({ signerId }: FormProps) {
       }
       const data = JSON.stringify({
         signerId: signerId,
+        channelId: channelId,
         castMessage: values.cast,
         fileLink: fileLink,
       });
@@ -134,7 +136,7 @@ export function CastForm({ signerId }: FormProps) {
             name="cast"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Send a Cast to /bcbhshow</FormLabel>
+                <FormLabel>Cast to /{channelId}</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="hurh hurh"
