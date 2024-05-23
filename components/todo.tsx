@@ -13,9 +13,13 @@ function ToDo() {
         <AccordionContent>
           <ul>
             <li>state management (dark mode, save settings)</li>
-            <li>algo selects channels</li>
+            <li>
+              lots of feed settings: embeds on/off, power users on/off,
+              following on/off, Airstack SCS slider
+            </li>
+            <li>algo selects channels per user</li>
             <li>cross-client pinned casts</li>
-            <li>actions + frames</li>
+            <li>cross-client actions + frames</li>
           </ul>
         </AccordionContent>
       </AccordionItem>
