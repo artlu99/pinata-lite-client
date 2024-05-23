@@ -12,6 +12,7 @@ import ChannelSelector from "@/components/channel-selector";
 import DecentralizedBookmarks from "@/components/bookmarks";
 import Feed from "@/components/feed";
 import ToDo from "@/components/todo";
+import GithubLink from "@/components/github";
 
 export default function Home() {
   const [channelId, setChannelId] = useState(siteMeta.channelId);
@@ -58,6 +59,7 @@ export default function Home() {
           <hr />
           <ToDo />
         </div>
+        <GithubLink />
       </main>
     </NeynarContextProvider>
   );
