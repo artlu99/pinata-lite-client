@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useBearStore } from "@/lib/bearStore";
+import { FarcasterChannelsLink } from "./link-outs";
 
 const knownChannels = [
   { id: "bcbhshow", name: "The BeavChris and BArt-Head Show" },
@@ -41,6 +42,7 @@ function ChannelSelector() {
           })}
         </SelectContent>
       </Select>
+      <FarcasterChannelsLink />
     </>
   );
 }

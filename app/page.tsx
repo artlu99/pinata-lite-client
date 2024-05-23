@@ -11,7 +11,7 @@ import ChannelSelector from "@/components/channel-selector";
 import DecentralizedBookmarks from "@/components/bookmarks";
 import Feed from "@/components/feed";
 import ToDo from "@/components/todo";
-import GithubLink from "@/components/github";
+import { GithubLink } from "@/components/link-outs";
 
 const Logo = () => (
   <Image src={siteMeta.logo} alt="logo" className="" width={450} height={450} />
