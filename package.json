@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "@farcaster/auth-client": "^0.1.1",
-    "@farcaster/auth-kit": "^0.2.2",
     "@hookform/resolvers": "^3.3.4",
+    "@neynar/nodejs-sdk": "^1.26.0",
+    "@neynar/react": "^0.3.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -29,7 +30,6 @@
     "react-dom": "^18",
     "react-farcaster-embed": "^1.6.0",
     "react-hook-form": "^7.51.3",
-    "react-qrcode-logo": "^2.10.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "unfurl.js": "^6.4.0",

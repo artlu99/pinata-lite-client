@@ -1,36 +1,42 @@
 import { NextResponse, NextRequest } from "next/server";
-import { fdk } from "@/config/fdk"
+import { NeynarAPIClient, isApiErrorResponse } from "@neynar/nodejs-sdk";
+import siteMeta from "@/config/site.config";
+
+const client = new NeynarAPIClient(process.env.NEYNAR_API_KEY!);
 
 export async function POST(request: NextRequest) {
+  // a top-level cast in channel with 1 optional embeds, no replies
+  // no mentions (YET)!!!
+
+  const js = (await request.json()) as {
+    signerId: string;
+    castMessage: string;
+    fileLink?: string;
+  };
+
+  const { signerId: signerUuid, castMessage: text, fileLink } = js;
+  const idemKey = JSON.stringify(js)
+
   try {
-    const body = await request.json();
-
-    let castBody: any = {}
-    if(body.fileLink){
-      castBody.text = body.castMessage
-      castBody.embeds = [{ url: body.fileLink }]
-      castBody.parentUrl = "https://warpcast.com/~/channel/bcbhshow"
-    } else {
-      castBody.text = body.castMessage
-      castBody.parentUrl = "https://warpcast.com/~/channel/bcbhshow"
-    }
-
-    const res = await fdk.sendCast({
-      castAddBody: castBody,
-      signerId: body.signerId
+    const { hash } = await client.publishCast(signerUuid, text, {
+      embeds: fileLink ? [{ url: fileLink }] : undefined,
+      channelId: siteMeta.channelId,
+      idem: idemKey,
     });
-
-    if (!res.hash) {
+    return NextResponse.json(
+      { message: `Cast with hash ${hash} published successfully` },
+      { status: 200 }
+    );
+  } catch (err) {
+    if (isApiErrorResponse(err)) {
       return NextResponse.json(
-        { Error: "Failed to send cast" },
-        { status: 500 },
+        { ...err.response.data },
+        { status: err.response.status }
       );
-    } else {
-      const hash = res.hash
-      return NextResponse.json({ hash }, { status: 200 });
-    }
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json(error);
+    } else
+      return NextResponse.json(
+        { message: "Something went wrong" },
+        { status: 500 }
+      );
   }
 }

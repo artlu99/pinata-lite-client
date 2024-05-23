@@ -1,24 +1,26 @@
 "use client";
 
+import { NeynarContextProvider, Theme } from "@neynar/react";
+import "@neynar/react/dist/style.css";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import "@farcaster/auth-kit/styles.css";
-import { AuthKitProvider } from "@farcaster/auth-kit";
 import { SignIn } from "@/components/sign-in";
-import siteMeta from "@/config/site.config";
-
-const config = {
-  rpcUrl: "https://mainnet.optimism.io",
-  domain: siteMeta.domain,
-  siweUri: `${siteMeta.websiteUrl}/api/retrieveSigner`,
-};
 
 export function Auth() {
   const [open, setOpen] = useState(false);
 
   return (
-    <AuthKitProvider config={config}>
+    <NeynarContextProvider
+      settings={{
+        clientId: process.env.NEXT_PUBLIC_NEYNAR_CLIENT_ID || "",
+        defaultTheme: Theme.Light,
+        eventsCallbacks: {
+          onAuthSuccess: () => {},
+          onSignout() {},
+        },
+      }}
+    >
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button className="sm:w-[500px] w-[300px] mt-4" variant="outline">
@@ -29,6 +31,6 @@ export function Auth() {
           <SignIn />
         </DialogContent>
       </Dialog>
-    </AuthKitProvider>
+    </NeynarContextProvider>
   );
 }
