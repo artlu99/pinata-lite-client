@@ -4,6 +4,7 @@ const siteMeta = {
   domain: "client-bcbhshow.artlu.xyz",
   websiteUrl: "https://client-bcbhshow.artlu.xyz",
   channelId: "bcbhshow",
+  defaultFid: 391262,
   logo: "/logo.svg", 
   ogImage: "/og.png",
   favicon: "/favicon.png"

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { FCANResponse } from "@/lib/external";
 import { SettingsIcon } from "lucide-react";
 
@@ -11,7 +12,22 @@ const openInNewTab = (url: string | undefined) => {
   if (url) window.open(url, "_blank", "noopener noreferrer");
 };
 
-const Advert = ({ data }: { data: FCANResponse }) => {
+const Advert = ({ fid }: { fid: number }) => {
+  const [data, setData] = useState<FCANResponse>();
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/fcan", {
+        method: "POST",
+        headers: {
+          contentType: "application/json",
+        },
+        body: JSON.stringify({ fid }),
+      });
+      setData(await res.json());
+    };
+    fetchData();
+  }, [fid]);
+
   const Card = () => {
     return (
       <div>

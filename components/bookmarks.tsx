@@ -1,5 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Bookmark, BookmarksResponse } from "@/lib/external";
-import { FarcasterEmbed } from "react-farcaster-embed";
+import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
 import "react-farcaster-embed/dist/styles.css";
 import {
   Accordion,
@@ -31,12 +34,27 @@ const renderBookmarkListItem = (bm: Bookmark, idx: number) => {
 };
 
 const DecentralizedBookmarks = ({
-  data,
+  fid,
   wideScreen,
 }: {
-  data: BookmarksResponse;
+  fid: number;
   wideScreen: boolean;
 }) => {
+  const [data, setData] = useState<BookmarksResponse>();
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/decent-bookmarks", {
+        method: "POST",
+        headers: {
+          contentType: "application/json",
+        },
+        body: JSON.stringify({ fid }),
+      });
+      setData(await res.json());
+    };
+    fetchData();
+  }, [fid]);
+
   const l: Bookmark[] = data?.unfiled ?? [];
 
   return (
@@ -70,5 +88,4 @@ const DecentralizedBookmarks = ({
     </Accordion>
   );
 };
-
 export default DecentralizedBookmarks;

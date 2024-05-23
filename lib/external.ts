@@ -19,9 +19,8 @@ export interface BookmarksResponse {
   unfiled?: Bookmark[];
 }
 
-export async function fetchFCAN(): Promise<FCANResponse> {
-  const endpoint =
-    "https://fcan.xyz/getadsfor?fid=391262&src=client-bcbhshow.artlu.xyz";
+export async function fetchFCAN(fid: number): Promise<FCANResponse> {
+  const endpoint = `https://fcan.xyz/getadsfor?fid=${fid}&src=client-bcbhshow.artlu.xyz`;
   const res = await fetch(`${endpoint}`, {
     headers: { Authorization: `Bearer ${FCAN_TOKEN}` },
     next: { revalidate: 0 },
