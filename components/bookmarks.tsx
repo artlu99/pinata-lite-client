@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { Bookmark, BookmarksResponse } from "@/lib/external";
 import { FarcasterEmbed } from "react-farcaster-embed/dist/client";

@@ -1,5 +1,3 @@
-"use client";
-
 import "@neynar/react/dist/style.css";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";

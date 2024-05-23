@@ -1,9 +1,7 @@
-"use client";
-
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Embed } from "@/components/embed";
 import { useEffect, useState } from "react";
 import { FeedObject } from "@/lib/feed-types";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Embed } from "@/components/embed";
 
 interface FeedProps {
   channelId: string;

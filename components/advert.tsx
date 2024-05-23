@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { FCANResponse } from "@/lib/external";
 import { SettingsIcon } from "lucide-react";
