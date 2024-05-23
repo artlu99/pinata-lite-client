@@ -6,7 +6,7 @@ This client uses the following tech stacks and packages:
 
 - Next.js 14 App Router w/ Tailwind
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Farcaster Auth-Kit](https://github.com/farcasterxyz/auth-monorepo)
+- [Neynar Auth + SIWN Managed Signers](https://github.com/farcasterxyz/auth-monorepo)
 - [Pinata FDK](https://github.com/PinataCloud/pinata-fdk)
 
 ## Getting Started

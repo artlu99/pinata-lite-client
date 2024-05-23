@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@farcaster/auth-client": "^0.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@neynar/nodejs-sdk": "^1.26.0",
     "@neynar/react": "^0.3.1",
