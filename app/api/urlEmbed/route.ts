@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   const { url } = js;
 
   const cachedData = await preprocess(url); // speed up known embeds
-  if (cachedData) return cachedData;
+  if (cachedData) return NextResponse.json(cachedData, { status: 200 });
 
   let content;
   try {
