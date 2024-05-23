@@ -52,7 +52,7 @@ const DecentralizedBookmarks = ({ wideScreen }: { wideScreen: boolean }) => {
     fetchData();
   }, [fid]);
 
-  const l: Bookmark[] = data?.unfiled ?? [];
+  const l: Bookmark[] = data?.bookmarks ?? [];
 
   return (
     <Accordion

@@ -10,13 +10,14 @@ export interface FCANResponse {
   attribUrl?: string;
 }
 export interface Bookmark {
-  timestamp: number;
   fid: string;
-  username: string;
   hash: `0x${string}`;
+  username: string;
+  tags?: string[];
+  timestamp: number;
 }
 export interface BookmarksResponse {
-  unfiled?: Bookmark[];
+  bookmarks: Bookmark[];
 }
 
 export async function fetchFCAN(fid: number): Promise<FCANResponse> {
