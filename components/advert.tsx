@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { FCANResponse } from "@/lib/external";
 import { SettingsIcon } from "lucide-react";
+import siteMeta from "@/config/site.config";
+import { useNeynarContext } from "@neynar/react";
 
 const fcanUserSettingsLink = () => "https://fcan.xyz/settings";
 const fcanTransparencyLink = (id: string | undefined) =>
@@ -12,7 +14,10 @@ const openInNewTab = (url: string | undefined) => {
   if (url) window.open(url, "_blank", "noopener noreferrer");
 };
 
-const Advert = ({ fid }: { fid: number }) => {
+const Advert = () => {
+  const { user } = useNeynarContext();
+  const fid = user ? user.fid : siteMeta.defaultFid;
+
   const [data, setData] = useState<FCANResponse>();
   useEffect(() => {
     const fetchData = async () => {

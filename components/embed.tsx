@@ -4,14 +4,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { AvatarImage, Avatar, AvatarFallback } from "./ui/avatar";
 import { preprocess } from "@/lib/preprocess-embeds";
-
-interface EmbedObject {
-  url?: string;
-  cast_id?: {
-    fid: number;
-    hash: string;
-  };
-}
+import { EmbedObject } from "@/lib/feed-types";
 
 async function fetchData(url: string) {
   const cachedData = await preprocess(url); // speed up known embeds

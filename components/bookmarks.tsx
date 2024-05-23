@@ -10,6 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import siteMeta from "@/config/site.config";
+import { useNeynarContext } from "@neynar/react";
 
 const NUM_BOOKMARKS_SHOWN = 3;
 const BOOKMARKS_ORDER: "ASC" | "DESC" = "DESC";
@@ -33,13 +35,10 @@ const renderBookmarkListItem = (bm: Bookmark, idx: number) => {
   );
 };
 
-const DecentralizedBookmarks = ({
-  fid,
-  wideScreen,
-}: {
-  fid: number;
-  wideScreen: boolean;
-}) => {
+const DecentralizedBookmarks = ({ wideScreen }: { wideScreen: boolean }) => {
+  const { user } = useNeynarContext();
+  const fid = user ? user.fid : siteMeta.defaultFid;
+
   const [data, setData] = useState<BookmarksResponse>();
   useEffect(() => {
     const fetchData = async () => {

@@ -12,7 +12,7 @@ async function ToDo() {
         <AccordionTrigger>To Do</AccordionTrigger>
         <AccordionContent>
           <ul>
-            <li>personalized bookmarks + ads</li>
+            <li>fix (temporarily broken) embeds</li>
             <li>state management (dark mode)</li>
             <li>setting to hide caster details</li>
             <li>algo selects channels</li>
