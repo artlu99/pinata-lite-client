@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { Feed } from "@/components/feed";
-import "./globals.css";
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import { useState } from "react";
+import { NeynarContextProvider, Theme } from "@neynar/react";
+import { Separator } from "@/components/ui/separator";
+import "./globals.css";
 import siteMeta from "@/config/site.config";
 import Advert from "@/components/advert";
+import Auth from "@/components/auth";
 import ChannelSelector from "@/components/channel-selector";
-import ToDo from "@/components/todo";
 import DecentralizedBookmarks from "@/components/bookmarks";
-import { Auth } from "@/components/auth";
-import { NeynarContextProvider, Theme } from "@neynar/react";
+import Feed from "@/components/feed";
+import ToDo from "@/components/todo";
 
 export default function Home() {
   const [channelId, setChannelId] = useState(siteMeta.channelId);

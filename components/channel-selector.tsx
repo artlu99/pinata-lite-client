@@ -10,6 +10,7 @@ const knownChannels = [
   { id: "bcbhshow", name: "The BeavChris and BArt-Head Show" },
   { id: "christin", name: "christin's 🧹✨🏥🩺⚕️🌱 crew" },
   { id: "spirituality", name: "spirituality" },
+  { id: "thomas", name: "thomas" },
 ];
 
 function ChannelSelector({
