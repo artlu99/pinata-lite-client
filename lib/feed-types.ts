@@ -11,7 +11,7 @@ export interface CastObject {
     pfp_url?: string;
   };
   text: string;
-  mentioned_profiles: number[];
+  mentioned_profiles: UserProfile[];
   parent_author: { fid: number | null };
   parent_hash: string | null;
   parent_url: string;
@@ -36,4 +36,14 @@ export interface EmbedObject {
 interface UserDetails {
   fid: number;
   fname: string;
+}
+
+interface UserProfile {
+  fid: number;
+  username?: string;
+  display_name?: string;
+  follower_count: number;
+  following_count: number;
+  pfp_url: string | null;
+  power_badge: boolean;
 }

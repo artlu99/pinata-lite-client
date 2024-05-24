@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AvatarImage, Avatar, AvatarFallback } from "./ui/avatar";
 import { useBearStore } from "@/lib/bearStore";
+import { CastObject } from "@/lib/feed-types";
 
 export function EmbedHash({ hash }: { hash: string | undefined }) {
-  const [cast, setCast] = useState<any>();
+  if (!hash) return;
+  
+  const [cast, setCast] = useState<CastObject>();
 
   const { hidePfp } = useBearStore();
 
@@ -25,7 +28,8 @@ export function EmbedHash({ hash }: { hash: string | undefined }) {
   }, [hash]);
 
   return (
-    cast && (
+    cast &&
+    cast.author && (
       <Link
         href={`https://warpcast.com/${cast.author.username}/${cast.hash}`}
         target="_blank"
