@@ -1,8 +1,9 @@
 import { ChannelObject } from "@/lib/channel-types";
 
 export const cacheInvalidateTime = {
-  warpcast: 600,
-  pinata: 60,
+  pinata: 120, // 2 mins
+  warpcast: 600, // 10 mins
+  warpcastPowerBadge: 86400, // 1 day
 };
 
 export const knownChannels: ChannelObject[] = [

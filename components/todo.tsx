@@ -13,9 +13,8 @@ function ToDo() {
         <AccordionContent>
           <ul>
             <li>all channels w/ metadata (logo, hosts)</li>
-            <li>new channel Main feed rules</li>
             <li>
-              feed filters: power badge, me|channel following
+              feed filters: me|channel following
             </li>
             <li>sort buttons: # likes, engagement score</li>
             <li>calendars: how far back to go</li>

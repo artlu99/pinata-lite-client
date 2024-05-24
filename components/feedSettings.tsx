@@ -28,6 +28,8 @@ export default function FeedSettings() {
     toggleHidePfp,
     mainFeed,
     toggleMainFeed,
+    powerBadgeOnly,
+    togglePowerBadgeOnly,
   } = useBearStore();
 
   return (
@@ -55,7 +57,11 @@ export default function FeedSettings() {
                 onClick={() => toggleHidePfp()}
               />
               {settingLabel("Hide PFPs")}
-              <Checkbox id="power-badge" checked={false} onClick={() => {}} />
+              <Checkbox
+                id="power-badge"
+                checked={powerBadgeOnly}
+                onClick={() => togglePowerBadgeOnly()}
+              />
               {settingLabel("Power Badge only")}
             </div>
             <div className="flex mt-2">

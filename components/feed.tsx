@@ -15,8 +15,12 @@ const isAllowedInMainFeed = (cast: CastObject, channelModerators: number[]) => {
   );
 };
 
+const hasPowerBadge = (cast: CastObject, powerBadgeFids: number[]) =>
+  powerBadgeFids.find((f) => f === cast.author.fid);
+
 export default function Feed() {
   const [feed, setFeed] = useState<FeedObject>();
+  const [powerBadgeFids, setPowerBadgeFids] = useState<number[]>();
 
   const {
     channelId,
@@ -25,6 +29,7 @@ export default function Feed() {
     hideImageOnly,
     hidePfp,
     mainFeed,
+    powerBadgeOnly,
     channelModerators,
   } = useBearStore();
 
@@ -35,12 +40,21 @@ export default function Feed() {
         headers: {
           contentType: "application/json",
         },
-        body: JSON.stringify({ channel: channelId, pageSize: 100 }),
+        body: JSON.stringify({ channel: channelId, pageSize: 10 }),
       });
       setFeed(await res.json());
     };
     fetchData();
   }, [channelId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/power-badge-users", { method: "GET" });
+      const js = await res.json();
+      setPowerBadgeFids(js.result.fids);
+    };
+    fetchData();
+  }, []);
 
   return (
     feed && (
@@ -48,6 +62,11 @@ export default function Feed() {
         {showSettings && <FeedSettings />}
         <Separator />
         {feed.casts
+          .filter(
+            (c) =>
+              !powerBadgeOnly ||
+              (powerBadgeFids ? hasPowerBadge(c, powerBadgeFids) : true)
+          )
           .filter((c) => !mainFeed || isAllowedInMainFeed(c, channelModerators))
           .map((cast, idx) => {
             if (hideImageOnly && cast.text.length === 0) {

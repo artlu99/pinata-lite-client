@@ -11,6 +11,7 @@ type SettingsStore = {
   hideImageOnly: boolean;
   hidePfp: boolean;
   mainFeed: boolean;
+  powerBadgeOnly: boolean;
   showSettings: boolean;
   showLogo: boolean;
   loadAds: boolean;
@@ -21,6 +22,7 @@ type SettingsStore = {
   toggleHideImageOnly: () => void;
   toggleHidePfp: () => void;
   toggleMainFeed: () => void;
+  togglePowerBadgeOnly: () => void;
   toggleShowSettings: () => void;
   toggleShowLogo: () => void;
   toggleLoadAds: () => void;
@@ -55,6 +57,9 @@ const useSettingsStore: StateCreator<SettingsStore> = (set) => ({
   mainFeed: true,
   toggleMainFeed: () =>
     set((state) => ({ ...state, mainFeed: !state.mainFeed })),
+  powerBadgeOnly: false,
+  togglePowerBadgeOnly: () =>
+    set((state) => ({ ...state, powerBadgeOnly: !state.powerBadgeOnly })),
   showSettings: true,
   toggleShowSettings: () =>
     set((state) => ({ ...state, showSettings: !state.showSettings })),
