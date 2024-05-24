@@ -15,13 +15,13 @@ export async function POST(request: NextRequest) {
   };
 
   const { signerId: signerUuid, channelId, castMessage: text, fileLink } = js;
-  const idemKey = JSON.stringify(js);
+  const idem = JSON.stringify(js);
 
   try {
     const { hash } = await client.publishCast(signerUuid, text, {
       embeds: fileLink ? [{ url: fileLink }] : undefined,
-      channelId: channelId,
-      idem: idemKey,
+      channelId,
+      idem,
     });
     return NextResponse.json(
       { message: `Cast with hash ${hash} published successfully` },

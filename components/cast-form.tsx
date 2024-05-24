@@ -37,7 +37,7 @@ export function CastForm({ signerId }: FormProps) {
   const [selectedFile, setSelecteFile] = useState();
   const [imageLoading, setImageLoading] = useState(false);
 
-  const { channelId } = useBearStore();
+  const { activeChannel } = useBearStore();
 
   async function fileChangeHandler(event: any) {
     setImageLoading(true);
@@ -67,10 +67,10 @@ export function CastForm({ signerId }: FormProps) {
         fileLink = await uploadFile(selectedFile);
       }
       const data = JSON.stringify({
-        signerId: signerId,
-        channelId: channelId,
+        signerId,
+        channelId: activeChannel.id,
         castMessage: values.cast,
-        fileLink: fileLink,
+        fileLink,
       });
       const submitMessage = await fetch("/api/cast", {
         method: "POST",
@@ -137,7 +137,7 @@ export function CastForm({ signerId }: FormProps) {
             name="cast"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Cast to /{channelId}</FormLabel>
+                <FormLabel>Cast to /{activeChannel.name}</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="hurh hurh"
