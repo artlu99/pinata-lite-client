@@ -41,7 +41,7 @@ export default function Home() {
         </div>
         <div className="block lg:hidden">
           {loadAds && <Advert />}
-          <Logo />
+          {showLogo && <Logo />}
           <hr />
           {loadBookmarks && <DecentralizedBookmarks wideScreen={false} />}
         </div>
