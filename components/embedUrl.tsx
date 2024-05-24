@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
+import { Metadata } from "unfurl.js/dist/types";
 
 export function EmbedUrl({ url }: { url: string }) {
-  const [result, setResult] = useState<any>();
+  const [result, setResult] = useState<{ content: string; res: Metadata }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +35,7 @@ export function EmbedUrl({ url }: { url: string }) {
             <AspectRatio ratio={16 / 9}>
               <Image
                 src={
-                  (data?.open_graph.images && data.open_graph.images[0].url) ||
+                  (data.open_graph?.images && data.open_graph?.images[0].url) ||
                   "/photo.svg"
                 }
                 width={400}
@@ -44,9 +45,9 @@ export function EmbedUrl({ url }: { url: string }) {
               />
             </AspectRatio>
             <div className="flex flex-col px-2 pb-2 gap-1">
-              <p className="font-bold truncate">{data?.title}</p>
-              <p className="text-xs truncate">{data?.description}</p>
-              <p className="text-xs truncate">{data?.open_graph.url || url}</p>
+              <p className="font-bold truncate">{data.title}</p>
+              <p className="text-xs truncate">{data.description}</p>
+              <p className="text-xs truncate">{data.open_graph?.url || url}</p>
             </div>
           </Link>
         </div>
