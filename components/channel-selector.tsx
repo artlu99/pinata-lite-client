@@ -16,10 +16,10 @@ import {
 } from "@/lib/channel-types";
 import { FarcasterChannelsLink } from "./link-outs";
 import siteMeta, { knownChannels } from "@/config/site.config";
-import { unique } from "radash";
+import { sift, unique } from "radash";
 
 export const ChannelLogo = () => {
-  const { channelId } = useBearStore();
+  const { channelId, setChannelModerators } = useBearStore();
   const [imageUrl, setIimageUrl] = useState(siteMeta.logo);
 
   useEffect(() => {
@@ -32,9 +32,10 @@ export const ChannelLogo = () => {
         body: JSON.stringify({ channelId }),
       });
       const channelResultObject = (await res.json()) as ChannelResponseObject;
-      console.log(channelResultObject.result.channel);
-      setIimageUrl(
-        channelResultObject?.result?.channel?.imageUrl || siteMeta.logo
+      const channel = channelResultObject?.result?.channel;
+      setIimageUrl(channel?.imageUrl || siteMeta.logo);
+      setChannelModerators(
+        unique(sift([channel?.leadFid, channel?.moderatorFid]))
       );
     };
     fetchData();

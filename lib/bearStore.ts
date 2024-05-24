@@ -3,12 +3,14 @@ import { StateCreator, create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type BearStore = SettingsStore & StateStore;
+type FishStore = ChannelnfoStore;
 
 type SettingsStore = {
   darkMode: boolean;
   hideEmbeds: boolean;
   hideImageOnly: boolean;
   hidePfp: boolean;
+  mainFeed: boolean;
   showSettings: boolean;
   showLogo: boolean;
   loadAds: boolean;
@@ -18,6 +20,7 @@ type SettingsStore = {
   toggleHideEmbeds: () => void;
   toggleHideImageOnly: () => void;
   toggleHidePfp: () => void;
+  toggleMainFeed: () => void;
   toggleShowSettings: () => void;
   toggleShowLogo: () => void;
   toggleLoadAds: () => void;
@@ -26,6 +29,13 @@ type SettingsStore = {
 };
 
 type StateStore = {
+  channelId: string;
+  setChannelId: (newChannelId: string) => void;
+  channelModerators: number[];
+  setChannelModerators: (newChannelModerators: number[]) => void;
+};
+
+type ChannelnfoStore = {
   channelId: string;
   setChannelId: (newChannelId: string) => void;
 };
@@ -42,6 +52,9 @@ const useSettingsStore: StateCreator<SettingsStore> = (set) => ({
     set((state) => ({ ...state, hideImageOnly: !state.hideImageOnly })),
   hidePfp: false,
   toggleHidePfp: () => set((state) => ({ ...state, hidePfp: !state.hidePfp })),
+  mainFeed: true,
+  toggleMainFeed: () =>
+    set((state) => ({ ...state, mainFeed: !state.mainFeed })),
   showSettings: true,
   toggleShowSettings: () =>
     set((state) => ({ ...state, showSettings: !state.showSettings })),
@@ -62,6 +75,12 @@ const useStateStore: StateCreator<StateStore> = (set) => ({
   channelId: siteMeta.channelId,
   setChannelId: (c) =>
     set((state) => ({ ...state, channelId: c ?? state.channelId })),
+  channelModerators: [],
+  setChannelModerators: (l) =>
+    set((state) => ({
+      ...state,
+      channelModerators: l ?? state.channelModerators,
+    })),
 });
 
 export const useBearStore = create<BearStore>()(

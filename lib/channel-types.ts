@@ -6,9 +6,8 @@ export interface ChannelObject {
   name: string;
   description: string;
   imageUrl: string;
-  leadFid?: number;
-  hostFids?: number[];
-  moderatorFid?: number;
+  leadFid?: number | null;
+  moderatorFid?: number| null;
   createdAt?: number;
   followerCount?: number;
   followedAt?: number;

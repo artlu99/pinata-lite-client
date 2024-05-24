@@ -26,6 +26,8 @@ export default function FeedSettings() {
     toggleHideImageOnly,
     hidePfp,
     toggleHidePfp,
+    mainFeed,
+    toggleMainFeed,
   } = useBearStore();
 
   return (
@@ -55,11 +57,15 @@ export default function FeedSettings() {
               {settingLabel("Hide PFPs")}
               <Checkbox id="power-badge" checked={false} onClick={() => {}} />
               {settingLabel("Power Badge only")}
-              {/* <Checkbox
-                id="channel-follows"
-                checked={false}
-                onClick={() => {}}
+            </div>
+            <div className="flex mt-2">
+              <Checkbox
+                id="main-feed"
+                checked={mainFeed}
+                onClick={() => toggleMainFeed()}
               />
+              {settingLabel("Main feed")}
+              {/*<Checkbox id="channel-follows" checked={false} onClick={() => {}} />
               {settingLabel("Channel followers only")}
               <Checkbox id="my-follows" checked={false} onClick={() => {}} />
               {settingLabel("My follows only")}
