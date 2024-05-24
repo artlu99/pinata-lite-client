@@ -14,10 +14,11 @@ function ToDo() {
           <ul>
             <li>channels metadata (owner+curator)</li>
             <li>feed filters: me|channel following</li>
+            <li>display follow counts, reaction counts</li>
             <li>sort buttons: # likes, engagement score</li>
-            <li>calendars: how far back to go</li>
+            <li>calendars: how far back to go on algo</li>
             <li>sliders: Airstack SCS, SCV, PageRank thresholds</li>
-            <li>power badge historical views</li>
+            <li>historical power badge holders</li>
             <li>visible count of % of feed filtered out</li>
             <li>algo selects channels per user</li>
             <li>dark mode</li>

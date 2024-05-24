@@ -1,10 +1,9 @@
-import "@neynar/react/dist/style.css";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { SignIn } from "@/components/sign-in";
 
-export default function Auth() {
+export default function CastButton() {
   const [open, setOpen] = useState(false);
 
   return (

@@ -137,7 +137,7 @@ export function CastForm({ signerId }: FormProps) {
             name="cast"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Cast to /{activeChannel.name}</FormLabel>
+                <FormLabel>Cast to /{activeChannel.id}</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="hurh hurh"
@@ -145,7 +145,7 @@ export function CastForm({ signerId }: FormProps) {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage>@mentions are not supported (yet)</FormMessage>
               </FormItem>
             )}
           />
