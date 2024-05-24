@@ -37,6 +37,36 @@ export const knownChannels: ChannelObject[] = [
     description:
       "/adrienne is a channel for wanderers finding wonder in daily life ✨ share whatever sparks joy or piques your curiosity",
   },
+  {
+    id: "gmfarcaster",
+    name: "gmfarcaster",
+    imageUrl: "",
+    description: "",
+  },
+  {
+    id: "bnfarcaster",
+    name: "bnfarcaster",
+    imageUrl: "",
+    description: "",
+  },
+  {
+    id: "costco",
+    name: "costco",
+    imageUrl: "",
+    description: "",
+  },
+  {
+    id: "normcore",
+    name: "normcore",
+    imageUrl: "",
+    description: "",
+  },
+  {
+    id: "justinahn",
+    name: "justinahn",
+    imageUrl: "",
+    description: "",
+  },
 ];
 
 const siteMeta = {
