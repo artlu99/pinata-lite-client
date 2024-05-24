@@ -28,6 +28,7 @@ export default function Feed() {
     hideEmbeds,
     hideImageOnly,
     hidePfp,
+    hidePowerBadge,
     mainFeed,
     powerBadgeOnly,
     channelModerators,
@@ -68,7 +69,7 @@ export default function Feed() {
               (powerBadgeFids ? hasPowerBadge(c, powerBadgeFids) : true)
           )
           .filter((c) => !mainFeed || isAllowedInMainFeed(c, channelModerators))
-          .map((cast, idx) => {
+          .map((cast) => {
             if (hideImageOnly && cast.text.length === 0) {
               return;
             }
@@ -96,6 +97,11 @@ export default function Feed() {
                     >
                       {cast.author.display_name}
                     </p>
+                    {!hidePowerBadge && (
+                      <p className="font-bold">
+                        {hasPowerBadge(cast, powerBadgeFids ?? []) ? "⚡" : ""}
+                      </p>
+                    )}
                     <p className="text-gray-600">@{cast.author.username}</p>
                   </div>
                   <p className="pb-2">

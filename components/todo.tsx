@@ -12,10 +12,8 @@ function ToDo() {
         <AccordionTrigger>To Do</AccordionTrigger>
         <AccordionContent>
           <ul>
-            <li>all channels w/ metadata (logo, hosts)</li>
-            <li>
-              feed filters: me|channel following
-            </li>
+            <li>channels metadata (owner+curator)</li>
+            <li>feed filters: me|channel following</li>
             <li>sort buttons: # likes, engagement score</li>
             <li>calendars: how far back to go</li>
             <li>sliders: Airstack SCS, SCV, PageRank thresholds</li>
