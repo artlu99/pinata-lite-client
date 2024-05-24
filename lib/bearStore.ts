@@ -1,6 +1,7 @@
 import siteMeta from "@/config/site.config";
 import { StateCreator, create } from "zustand";
 import { persist } from "zustand/middleware";
+import { ChannelObject } from "./channel-types";
 
 type BearStore = SettingsStore & StateStore;
 type FishStore = ChannelnfoStore;
@@ -31,8 +32,8 @@ type SettingsStore = {
 };
 
 type StateStore = {
-  channelId: string;
-  setChannelId: (newChannelId: string) => void;
+  activeChannel: ChannelObject;
+  setActiveChannel: (newChannel: ChannelObject) => void;
   channelModerators: number[];
   setChannelModerators: (newChannelModerators: number[]) => void;
 };
@@ -77,9 +78,14 @@ const useSettingsStore: StateCreator<SettingsStore> = (set) => ({
 });
 
 const useStateStore: StateCreator<StateStore> = (set) => ({
-  channelId: siteMeta.channelId,
-  setChannelId: (c) =>
-    set((state) => ({ ...state, channelId: c ?? state.channelId })),
+  activeChannel: {
+    id: siteMeta.channelId,
+    name: siteMeta.channelId,
+    description: siteMeta.description,
+    imageUrl: siteMeta.logo,
+  },
+  setActiveChannel: (c) =>
+    set((state) => ({ ...state, activeChannel: c ?? state.activeChannel })),
   channelModerators: [],
   setChannelModerators: (l) =>
     set((state) => ({

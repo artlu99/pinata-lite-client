@@ -23,7 +23,7 @@ export default function Feed() {
   const [powerBadgeFids, setPowerBadgeFids] = useState<number[]>();
 
   const {
-    channelId,
+    activeChannel,
     showSettings,
     hideEmbeds,
     hideImageOnly,
@@ -40,12 +40,12 @@ export default function Feed() {
         headers: {
           contentType: "application/json",
         },
-        body: JSON.stringify({ channel: channelId, pageSize: 10 }),
+        body: JSON.stringify({ channel: activeChannel.id, pageSize: 10 }),
       });
       setFeed(await res.json());
     };
     fetchData();
-  }, [channelId]);
+  }, [activeChannel]);
 
   useEffect(() => {
     const fetchData = async () => {

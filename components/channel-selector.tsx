@@ -19,8 +19,16 @@ import siteMeta, { knownChannels } from "@/config/site.config";
 import { sift, unique } from "radash";
 
 export const ChannelLogo = () => {
-  const { channelId, setChannelModerators } = useBearStore();
-  const [imageUrl, setIimageUrl] = useState(siteMeta.logo);
+  const { activeChannel } = useBearStore();
+  const { imageUrl } = activeChannel;
+  return (
+    <Image src={imageUrl} alt="logo" className="" width={450} height={450} />
+  );
+};
+
+function ChannelSelector() {
+  const { activeChannel, setActiveChannel, setChannelModerators } =
+    useBearStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,25 +37,16 @@ export const ChannelLogo = () => {
         headers: {
           contentType: "application/json",
         },
-        body: JSON.stringify({ channelId }),
+        body: JSON.stringify({ channelId: activeChannel.id }),
       });
       const channelResultObject = (await res.json()) as ChannelResponseObject;
       const channel = channelResultObject?.result?.channel;
-      setIimageUrl(channel?.imageUrl || siteMeta.logo);
       setChannelModerators(
         unique(sift([channel?.leadFid, channel?.moderatorFid]))
       );
     };
     fetchData();
-  }, [channelId]);
-
-  return (
-    <Image src={imageUrl} alt="logo" className="" width={450} height={450} />
-  );
-};
-
-function ChannelSelector() {
-  const { channelId, setChannelId } = useBearStore();
+  }, [activeChannel]);
 
   const [followingChannels, setFollowingChannels] = useState<ChannelObject[]>();
   const { user } = useNeynarContext();
@@ -80,11 +79,14 @@ function ChannelSelector() {
       <div>Channel selector:</div>
       <Select
         onValueChange={(value) => {
-          setChannelId(value);
+          setActiveChannel(
+            knownAndFollowingChannels.find((c) => c.id === value) ??
+              activeChannel
+          );
         }}
       >
         <SelectTrigger className="w-full">
-          <SelectValue placeholder={channelId} />
+          <SelectValue placeholder={activeChannel.id} />
         </SelectTrigger>
         <SelectContent>
           {knownAndFollowingChannels.map((selectItem) => {
