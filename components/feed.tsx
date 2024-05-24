@@ -2,33 +2,15 @@ import { useEffect, useState } from "react";
 import { FeedObject } from "@/lib/feed-types";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Embed } from "@/components/embed";
-import { Checkbox } from "./ui/checkbox";
 import { Separator } from "./ui/separator";
 import { useBearStore } from "@/lib/bearStore";
-
-const settingLabel = (label: string) => (
-  <div className="grid gap-1.5 leading-none">
-    <label
-      htmlFor="image-only"
-      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    >
-      {label}
-    </label>
-  </div>
-);
+import FeedSettings from "./feedSettings";
 
 export default function Feed() {
   const [feed, setFeed] = useState<FeedObject>();
 
-  const {
-    channelId,
-    hideEmbeds,
-    toggleHideEmbeds,
-    hideImageOnly,
-    toggleHideImageOnly,
-    hidePfp,
-    toggleHidePfp,
-  } = useBearStore();
+  const { channelId, showSettings, hideEmbeds, hideImageOnly, hidePfp } =
+    useBearStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,29 +29,7 @@ export default function Feed() {
   return (
     feed && (
       <>
-        <div>Feed Settings:</div>
-        <div className="items-top flex space-x-2">
-          <Checkbox
-            id="embeds"
-            checked={hideEmbeds}
-            onClick={() => toggleHideEmbeds()}
-          />
-          {settingLabel("Hide embeds")}
-          <Checkbox
-            id="image-only"
-            checked={hideImageOnly}
-            onClick={() => toggleHideImageOnly()}
-          />
-          {settingLabel("Hide image-only casts")}
-          <Checkbox
-            id="pfp"
-            checked={hidePfp}
-            onClick={() => toggleHidePfp()}
-          />
-          {settingLabel("Hide PFPs")}
-          <Checkbox id="power-badge" checked={false} onClick={() => {}} />
-          {settingLabel("Power Badge only")}
-        </div>
+        {showSettings && <FeedSettings />}
         <Separator />
         {feed.casts.map((cast) => {
           if (hideImageOnly && cast.text.length === 0) {
