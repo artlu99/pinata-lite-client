@@ -12,10 +12,16 @@ function ToDo() {
         <AccordionTrigger>To Do</AccordionTrigger>
         <AccordionContent>
           <ul>
+            <li>all channels w/ metadata (logo, hosts)</li>
+            <li>new channel Main feed rules</li>
             <li>
-              lots of feed settings: power badge, me|channel following, Airstack
-              SCS slider
+              feed filters: power badge, me|channel following
             </li>
+            <li>sort buttons: # likes, engagement score</li>
+            <li>calendars: how far back to go</li>
+            <li>sliders: Airstack SCS, SCV, PageRank thresholds</li>
+            <li>power badge historical views</li>
+            <li>visible count of % of feed filtered out</li>
             <li>algo selects channels per user</li>
             <li>dark mode</li>
             <li>cross-client pinned casts</li>

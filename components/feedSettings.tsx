@@ -53,11 +53,9 @@ export default function FeedSettings() {
                 onClick={() => toggleHidePfp()}
               />
               {settingLabel("Hide PFPs")}
-            </div>
-            <div className="flex my-4">
               <Checkbox id="power-badge" checked={false} onClick={() => {}} />
               {settingLabel("Power Badge only")}
-              <Checkbox
+              {/* <Checkbox
                 id="channel-follows"
                 checked={false}
                 onClick={() => {}}
@@ -66,7 +64,7 @@ export default function FeedSettings() {
               <Checkbox id="my-follows" checked={false} onClick={() => {}} />
               {settingLabel("My follows only")}
               <Checkbox id="my-followers" checked={false} onClick={() => {}} />
-              {settingLabel("My followers only")}
+              {settingLabel("My followers only")} */}
             </div>
           </div>
         </AccordionContent>
