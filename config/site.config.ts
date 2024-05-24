@@ -39,33 +39,36 @@ export const knownChannels: ChannelObject[] = [
   },
   {
     id: "gmfarcaster",
-    name: "gmfarcaster",
-    imageUrl: "",
-    description: "",
+    name: "GM Farcaster (podcast)",
+    imageUrl: "https://i.imgur.com/8OMHbYB.jpg",
+    description:
+      "GM Farcaster: 29 minutes of Farcaster news to start your day! With hosts @adrienne & @nounishprof streaming live Mon/Wed/Fri 8:30 am ET on Unlonely with recording deployed on Base via Zora to view and/or mint (and Apple, Spotify, & YouTube) GMFarcaster.com",
   },
   {
     id: "bnfarcaster",
-    name: "bnfarcaster",
-    imageUrl: "",
-    description: "",
+    name: "BNF | 1er podcast en español",
+    imageUrl: "https://i.imgur.com/ycn6Kcx.png",
+    description:
+      "Bienvenidos a Buenas Noches Farcaster (BNF) | Presentado por @whatsgood-al y @cryptowenmoon.eth | Juntos traemos las últimas novedades de los proyectos más innovadores dentro de Farcaster. https://www.youtube.com/@BuenasNochesFarcaster/videos",
   },
   {
     id: "costco",
-    name: "costco",
-    imageUrl: "",
-    description: "",
+    name: "Costco",
+    imageUrl: "https://i.imgur.com/Mh9x9IO.png",
+    description: "Costco enthusiasts of Farcaster",
   },
   {
     id: "normcore",
     name: "normcore",
-    imageUrl: "",
-    description: "",
+    imageUrl:
+      "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/e85f2561-7e0d-4165-5d58-3b10e99cdb00/original",
+    description: "your mom's favorite warpcast channel",
   },
   {
     id: "justinahn",
     name: "justinahn",
-    imageUrl: "",
-    description: "",
+    imageUrl: "https://i.imgur.com/n2YEWKR.png",
+    description: "justin ahn's little slice of farcaster on 🚾",
   },
 ];
 
