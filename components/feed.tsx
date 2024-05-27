@@ -1,3 +1,4 @@
+import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CastObject, FeedObject } from "@/lib/feed-types";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -36,6 +37,7 @@ export default function Feed() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setFeed(undefined);
       const res = await fetch("/api/cronFeed", {
         method: "POST",
         headers: {
@@ -58,11 +60,11 @@ export default function Feed() {
   }, []);
 
   return (
-    feed && (
-      <>
-        {showSettings && <FeedSettings />}
-        <Separator />
-        {feed.casts
+    <>
+      {showSettings && <FeedSettings />}
+      <Separator />
+      {feed ? (
+        feed.casts
           .filter(
             (c) =>
               !powerBadgeOnly ||
@@ -113,8 +115,12 @@ export default function Feed() {
                 </div>
               </div>
             );
-          })}
-      </>
-    )
+          })
+      ) : (
+        <div className="flex items-center justify-center">
+          <Loader />
+        </div>
+      )}
+    </>
   );
 }

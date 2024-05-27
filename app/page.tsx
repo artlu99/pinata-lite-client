@@ -6,7 +6,6 @@ import { GithubLink } from "@/components/link-outs";
 import { Separator } from "@/components/ui/separator";
 import "./globals.css";
 import Advert from "@/components/advert";
-import Auth from "@/components/cast-button";
 import ChannelSelector, { ChannelLogo } from "@/components/channel-selector";
 import DecentralizedBookmarks from "@/components/bookmarks";
 import Feed from "@/components/feed";
